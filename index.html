@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wanderly Travel Agency | Tours Made Personal</title>
+<meta name="description" content="Handcrafted tour packages to Bali, Kyoto, Santorini and more.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 12l20-8-6 16-4-6-6-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="currentColor"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#packages">Skip to packages</a>
+
+<header class="site-header">
+  <a class="logo" href="#top" aria-label="Wanderly home"><svg class="ico"><use href="#i-plane"/></svg> Wanderly</a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="nav" aria-label="Main">
+    <a href="#top">Home</a>
+    <a href="#packages">Packages</a>
+    <a href="#how">How it works</a>
+    <a href="#stories">Stories</a>
+    <a href="#plan">Plan</a>
+    <button class="btn btn-ghost" data-open-dialog>Sign in</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO: headline + destination carousel + stats ===== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Small-group &amp; private tours</p>
+      <h1 id="hero-title">Go where the <em>map</em> gets quiet.</h1>
+      <p>Wanderly Travel designs journeys around you: local guides, unhurried days, and zero tourist-trap itineraries.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#plan">Plan your trip</a>
+        <a class="btn btn-ghost" href="#packages">Browse tours</a>
+      </div>
+    </div>
+    <div class="hero-photo carousel" role="group" aria-roledescription="carousel" aria-label="Featured destinations">
+      <div class="slides">
+        <div class="slide is-active"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=70" alt="Rice terraces and palm trees in Bali at sunrise"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Tegallalang, Bali</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1400&q=70" alt="White buildings overlooking the sea in Santorini" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Oia, Santorini</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1400&q=70" alt="Red torii gates and temple in Kyoto" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Fushimi Inari, Kyoto</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1400&q=70" alt="Snowy Swiss Alps above a green valley" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Swiss Alps</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1400&q=70" alt="Overwater villas above turquoise lagoon in the Maldives" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Maldives</span></div>
+      </div>
+      <button class="arrow arrow-prev" type="button" aria-label="Previous destination"><svg class="ico"><use href="#i-left"/></svg></button>
+      <button class="arrow arrow-next" type="button" aria-label="Next destination"><svg class="ico"><use href="#i-right"/></svg></button>
+      <div class="dots" role="group" aria-label="Choose destination"></div>
+    </div>
+    <ul class="stats" aria-label="Wanderly in numbers">
+      <li><strong>48</strong> countries</li>
+      <li><strong>12k+</strong> happy travelers</li>
+      <li><strong>4.9</strong> average rating</li>
+    </ul>
+  </section>
+
+  <!-- ===== PACKAGES: CSS Grid mosaic with filter chips ===== -->
+  <section id="packages" class="section" aria-labelledby="pk-title">
+    <div class="section-head">
+      <h2 id="pk-title">Tour packages</h2>
+      <div class="chips" role="group" aria-label="Filter tours">
+        <button class="chip is-active" data-filter="all">All</button>
+        <button class="chip" data-filter="beach">Beach</button>
+        <button class="chip" data-filter="city">City</button>
+        <button class="chip" data-filter="adventure">Adventure</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card card-feature" data-type="beach">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=70" alt="Turquoise beach with white sand" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Best seller</span>
+          <h3>Island Escape, Palawan</h3>
+          <p>Lagoon hopping, snorkeling and sunset boats.</p>
+          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 7 days</span><span class="price">$1,150</span></div>
+          <a class="btn btn-primary" href="#plan">Book this trip</a>
+        </div>
+      </article>
+      <article class="card" data-type="city">
+        <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=800&q=70" alt="Tokyo street at night with neon signs" loading="lazy">
+        <div class="card-body"><h3>Neon Tokyo</h3><p>Food, temples and tech.</p>
+          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 6 days</span><span class="price">$1,480</span></div>
+          <a class="btn btn-ghost" href="#plan">Book</a></div>
+      </article>
+      <article class="card" data-type="city">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=70" alt="Eiffel Tower in Paris" loading="lazy">
+        <div class="card-body"><h3>Paris in Spring</h3><p>Museums, markets, Seine.</p>
+          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 5 days</span><span class="price">$1,320</span></div>
+          <a class="btn btn-ghost" href="#plan">Book</a></div>
+      </article>
+      <article class="card" data-type="adventure">
+        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=70" alt="Mountain lake with forest" loading="lazy">
+        <div class="card-body"><h3>Alpine Trails</h3><p>Hut-to-hut hiking.</p>
+          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 8 days</span><span class="price">$1,690</span></div>
+          <a class="btn btn-ghost" href="#plan">Book</a></div>
+      </article>
+      <article class="card" data-type="beach">
+        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=70" alt="Tropical beach with clear water" loading="lazy">
+        <div class="card-body"><h3>Siargao Surf Week</h3><p>Lessons and island life.</p>
+          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 5 days</span><span class="price">$780</span></div>
+          <a class="btn btn-ghost" href="#plan">Book</a></div>
+      </article>
+      <article class="card" data-type="city">
+        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=70" alt="Venice canal with gondolas" loading="lazy">
+        <div class="card-body"><h3>Venice &amp; Verona</h3><p>Canals and quiet piazzas.</p>
+          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 4 days</span><span class="price">$990</span></div>
+          <a class="btn btn-ghost" href="#plan">Book</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS: Flexbox steps ===== -->
+  <section id="how" class="section how" aria-labelledby="how-title">
+    <h2 id="how-title">Three steps. No spreadsheets.</h2>
+    <ol class="steps">
+      <li><span class="step-ico"><svg class="ico"><use href="#i-chat"/></svg></span><h3>Tell us your vibe</h3><p>Share dates, budget and mood.</p></li>
+      <li><span class="step-ico"><svg class="ico"><use href="#i-pin"/></svg></span><h3>Get a custom route</h3><p>Your planner drafts it within 48 hours.</p></li>
+      <li><span class="step-ico"><svg class="ico"><use href="#i-shield"/></svg></span><h3>Travel protected</h3><p>24/7 support and flexible rebooking.</p></li>
+    </ol>
+  </section>
+
+  <!-- ===== TESTIMONIALS: Flexbox cards ===== -->
+  <section id="stories" class="section stories" aria-labelledby="st-title">
+    <h2 id="st-title">Traveler stories</h2>
+    <div class="quotes">
+      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p>
+        “Our guide knew a ramen shop that wasn’t on any list. Best meal of the year.”<footer>Mika R., Tokyo tour</footer></blockquote>
+      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p>
+        “Plans changed last minute and they rebooked everything in an hour.”<footer>Daniel &amp; Joy, Palawan</footer></blockquote>
+      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p>
+        “Felt like traveling with a friend who happens to know everything.”<footer>Sofia L., Alpine Trails</footer></blockquote>
+    </div>
+  </section>
+
+  <!-- ===== PLAN YOUR TRIP: call to action form ===== -->
+  <section id="plan" class="plan" aria-labelledby="plan-title">
+    <div class="plan-inner">
+      <div>
+        <h2 id="plan-title">Plan your trip</h2>
+        <p>Tell us where you’re dreaming of. We’ll send a draft itinerary, no payment needed.</p>
+      </div>
+      <form class="plan-form" id="plan-form">
+        <label>Destination<input type="text" name="dest" placeholder="e.g. Kyoto" required></label>
+        <label>Travel month<input type="month" name="month" required></label>
+        <label>Travelers<select name="n"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select></label>
+        <button class="btn btn-primary" type="submit">Plan your trip</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="logo"><svg class="ico"><use href="#i-plane"/></svg> Wanderly</p>
+  <ul>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#plan">Plan</a></li>
+  </ul>
+  <small>&copy; 2026 Wanderly Travel. Test project, not a real business.</small>
+</footer>
+
+<!-- ===== SIGN IN / SIGN UP: popup (demo only, no backend) ===== -->
+<dialog id="auth" aria-labelledby="auth-title">
+  <div class="auth">
+    <h2 id="auth-title">Welcome back</h2>
+    <div class="tabs" role="group" aria-label="Account mode">
+      <button type="button" class="chip is-active" data-mode="in">Sign in</button>
+      <button type="button" class="chip" data-mode="up">Sign up</button>
+    </div>
+
+    <!-- Sign in: username + password only -->
+    <form class="auth-form" id="signin-form">
+      <label class="span-2">Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
+      <label class="span-2">Password<input type="password" name="password" placeholder="Password" autocomplete="current-password" required></label>
+      <div class="auth-actions span-2">
+        <button class="btn btn-ghost" type="button" data-close>Close</button>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+      </div>
+    </form>
+
+    <!-- Sign up: personal details, contact, address, then account -->
+    <form class="auth-form" id="signup-form" hidden>
+      <label>First name<input type="text" name="first" placeholder="Hinata" autocomplete="given-name" required></label>
+      <label>Last name<input type="text" name="last" placeholder="Shoyo" autocomplete="family-name" required></label>
+      <label>Gender
+        <select name="gender" required>
+          <option value="">Select</option><option>Female</option><option>Male</option><option>Non-binary</option><option>Others</option><option>Prefer not to say</option>
+        </select>
+      </label>
+      <label>Birthdate<input type="date" name="birthdate" placeholder="Date of Birth" autocomplete="bday" required></label>
+      <label>Email<input type="email" name="email" placeholder="john@example.com" autocomplete="email" required></label>
+      <label>Phone<input type="tel" name="phone" placeholder="(555) 555-5555" autocomplete="tel" required></label>
+      <label class="span-2">Street address<input type="text" name="street" placeholder="123 Main St, Apt 4B" autocomplete="street-address" required></label>
+      <label>City<input type="text" name="city" placeholder="New York" autocomplete="address-level2" required></label>
+      <label>Country<input type="text" name="country" placeholder="United States" autocomplete="country-name" required></label>
+      <label>Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
+      <label>Password<input type="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" minlength="6" required></label>
+
+      <div class="auth-actions span-2">
+        <button class="btn btn-ghost" type="button" data-close>Close</button>
+        <button class="btn btn-primary" type="submit">Create account</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
