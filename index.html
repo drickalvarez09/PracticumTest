@@ -31,7 +31,8 @@
     <a href="#how">How it works</a>
     <a href="#stories">Stories</a>
     <a href="#plan">Plan</a>
-    <button class="btn btn-ghost" data-open-dialog>Sign in</button>
+    <span class="greet" id="greet" hidden></span>
+    <button class="btn btn-ghost" id="auth-btn" type="button">Sign in</button>
   </nav>
 </header>
 
@@ -79,8 +80,28 @@
       </div>
     </div>
 
+    <!-- search, sort and budget: all handled in script.js -->
+    <div class="tools">
+      <label class="tool-search">Search tours
+        <input type="search" id="tour-search" placeholder="Try Tokyo, surf, hiking...">
+      </label>
+      <label>Sort by
+        <select id="tour-sort">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: low to high</option>
+          <option value="price-high">Price: high to low</option>
+          <option value="days-short">Shortest trip first</option>
+        </select>
+      </label>
+      <label>Max budget: <output id="budget-out">$2,000</output>
+        <input type="range" id="budget" min="500" max="2000" step="50" value="2000">
+      </label>
+    </div>
+    <p class="result-count" id="result-count" aria-live="polite"></p>
+    <p class="empty" id="empty-msg" hidden>No tours match that yet. Try a bigger budget or clear the search.</p>
+
     <div class="grid">
-      <article class="card card-feature" data-type="beach">
+      <article data-days="7" data-price="1150" class="card card-feature" data-type="beach">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=70" alt="Turquoise beach with white sand" loading="lazy">
         <div class="card-body">
           <span class="tag">Best seller</span>
@@ -90,35 +111,50 @@
           <a class="btn btn-primary" href="#plan">Book this trip</a>
         </div>
       </article>
-      <article class="card" data-type="city">
+      <article data-days="6" data-price="1480" class="card" data-type="city">
         <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=800&q=70" alt="Tokyo street at night with neon signs" loading="lazy">
-        <div class="card-body"><h3>Neon Tokyo</h3><p>Food, temples and tech.</p>
+        <div class="card-body">
+          <h3>Neon Tokyo</h3>
+          <p>Food, temples and tech.</p>
           <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 6 days</span><span class="price">$1,480</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a></div>
+          <a class="btn btn-ghost" href="#plan">Book</a>
+        </div>
       </article>
-      <article class="card" data-type="city">
+      <article data-days="5" data-price="1320" class="card" data-type="city">
         <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=70" alt="Eiffel Tower in Paris" loading="lazy">
-        <div class="card-body"><h3>Paris in Spring</h3><p>Museums, markets, Seine.</p>
+        <div class="card-body">
+          <h3>Paris in Spring</h3>
+          <p>Museums, markets, Seine.</p>
           <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 5 days</span><span class="price">$1,320</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a></div>
+          <a class="btn btn-ghost" href="#plan">Book</a>
+        </div>
       </article>
-      <article class="card" data-type="adventure">
+      <article data-days="8" data-price="1690" class="card" data-type="adventure">
         <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=70" alt="Mountain lake with forest" loading="lazy">
-        <div class="card-body"><h3>Alpine Trails</h3><p>Hut-to-hut hiking.</p>
+        <div class="card-body">
+          <h3>Alpine Trails</h3>
+          <p>Hut-to-hut hiking.</p>
           <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 8 days</span><span class="price">$1,690</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a></div>
+          <a class="btn btn-ghost" href="#plan">Book</a>
+        </div>
       </article>
-      <article class="card" data-type="beach">
+      <article data-days="5" data-price="780" class="card" data-type="beach">
         <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=70" alt="Tropical beach with clear water" loading="lazy">
-        <div class="card-body"><h3>Siargao Surf Week</h3><p>Lessons and island life.</p>
+        <div class="card-body">
+          <h3>Siargao Surf Week</h3>
+          <p>Lessons and island life.</p>
           <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 5 days</span><span class="price">$780</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a></div>
+          <a class="btn btn-ghost" href="#plan">Book</a>
+        </div>
       </article>
-      <article class="card" data-type="city">
+      <article data-days="4" data-price="990" class="card" data-type="city">
         <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=70" alt="Venice canal with gondolas" loading="lazy">
-        <div class="card-body"><h3>Venice &amp; Verona</h3><p>Canals and quiet piazzas.</p>
+        <div class="card-body">
+          <h3>Venice &amp; Verona</h3>
+          <p>Canals and quiet piazzas.</p>
           <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 4 days</span><span class="price">$990</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a></div>
+          <a class="btn btn-ghost" href="#plan">Book</a>
+        </div>
       </article>
     </div>
   </section>
@@ -153,10 +189,38 @@
         <h2 id="plan-title">Plan your trip</h2>
         <p>Tell us where you’re dreaming of. We’ll send a draft itinerary, no payment needed.</p>
       </div>
-      <form class="plan-form" id="plan-form">
-        <label>Destination<input type="text" name="dest" placeholder="e.g. Kyoto" required></label>
-        <label>Travel month<input type="month" name="month" required></label>
-        <label>Travelers<select name="n"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select></label>
+      <form class="plan-form" id="plan-form" novalidate>
+        <label>Your name
+          <input type="text" name="fullname" placeholder="Maria Santos" autocomplete="name">
+          <small class="error"></small>
+        </label>
+        <label>Email
+          <input type="email" name="email" placeholder="maria@example.com" autocomplete="email">
+          <small class="error"></small>
+        </label>
+        <label>Destination
+          <input type="text" name="dest" placeholder="e.g. Kyoto">
+          <small class="error"></small>
+        </label>
+        <label>Travel month
+          <input type="month" name="month">
+          <small class="error"></small>
+        </label>
+        <label>Travelers
+          <select name="n"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select>
+        </label>
+        <label>Budget per person
+          <select name="budget">
+            <option value="">No idea yet</option>
+            <option>Under $1,000</option>
+            <option>$1,000 to $1,500</option>
+            <option>$1,500 to $2,500</option>
+            <option>$2,500+</option>
+          </select>
+        </label>
+        <label class="wide">Anything we should know? <span class="counter" id="notes-count">0/200</span>
+          <textarea name="notes" rows="3" maxlength="200" placeholder="Food allergies, honeymoon, hates early mornings..."></textarea>
+        </label>
         <button class="btn btn-primary" type="submit">Plan your trip</button>
       </form>
     </div>
@@ -184,9 +248,12 @@
     </div>
 
     <!-- Sign in: username + password only -->
-    <form class="auth-form" id="signin-form">
+    <form class="auth-form" id="signin-form" novalidate>
       <label class="span-2">Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
-      <label class="span-2">Password<input type="password" name="password" placeholder="Password" autocomplete="current-password" required></label>
+      <label class="span-2">Password<input type="password" id="password-field" name="password" placeholder="Password" autocomplete="current-password" required></label>
+      <label class="check span-2"><input type="checkbox" id="show-pw-signin"> Show password</label>
+
+      <p class="form-error span-2" role="alert" hidden></p>
       <div class="auth-actions span-2">
         <button class="btn btn-ghost" type="button" data-close>Close</button>
         <button class="btn btn-primary" type="submit">Sign in</button>
@@ -194,7 +261,7 @@
     </form>
 
     <!-- Sign up: personal details, contact, address, then account -->
-    <form class="auth-form" id="signup-form" hidden>
+    <form class="auth-form" id="signup-form" novalidate hidden>
       <label>First name<input type="text" name="first" placeholder="Hinata" autocomplete="given-name" required></label>
       <label>Last name<input type="text" name="last" placeholder="Shoyo" autocomplete="family-name" required></label>
       <label>Gender
@@ -210,7 +277,10 @@
       <label>Country<input type="text" name="country" placeholder="United States" autocomplete="country-name" required></label>
       <label>Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
       <label>Password<input type="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" minlength="6" required></label>
+      <label class="span-2">Confirm password<input type="password" name="confirm" placeholder="Type it again" autocomplete="new-password" required></label>
+      <label class="check span-2"><input type="checkbox" id="show-pw-signup"> Show password</label>
 
+      <p class="form-error span-2" role="alert" hidden></p>
       <div class="auth-actions span-2">
         <button class="btn btn-ghost" type="button" data-close>Close</button>
         <button class="btn btn-primary" type="submit">Create account</button>
