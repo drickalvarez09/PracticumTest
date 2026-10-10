@@ -23,6 +23,21 @@ A single-page travel agency website built for the **Week 1 practicum activity**.
 - [x] Flexbox (header, nav, steps, testimonials, footer) and Grid (hero, package grid, plan section)
 - [x] No horizontal scroll on phone, tablet, or desktop
 
+## Color Names
+
+All colors live at the top of `styles.css` in `:root`, with plain names:
+
+| Variable | Use |
+| --- | --- |
+| `--black` | text, dark buttons, footer |
+| `--white` | cards, form background |
+| `--grey` / `--light-grey` / `--silver` | secondary text, borders, footer text |
+| `--red` / `--red-hover` | main accent (buttons, highlights) |
+| `--error-red` / `--light-red` | form errors |
+| `--teal` / `--dark-teal` / `--light-teal` | secondary accent |
+| `--cream` | page background |
+| `--yellow` | review stars |
+
 ## Project Structure
 
 ```

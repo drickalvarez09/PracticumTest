@@ -10,29 +10,29 @@
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 12l20-8-6 16-4-6-6-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="currentColor"/></symbol>
-  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="icon-plane" viewBox="0 0 24 24"><path d="M2 12l20-8-6 16-4-6-6-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="currentColor"/></symbol>
+  <symbol id="icon-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
 </svg>
 
-<a class="skip" href="#packages">Skip to packages</a>
+<a class="skip-link" href="#packages">Skip to packages</a>
 
 <header class="site-header">
-  <a class="logo" href="#top" aria-label="Wanderly home"><svg class="ico"><use href="#i-plane"/></svg> Wanderly</a>
-  <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <a class="logo" href="#top" aria-label="Wanderly home"><svg class="icon"><use href="#icon-plane"/></svg> Wanderly</a>
+  <button class="menu-button" aria-expanded="false" aria-controls="nav">Menu</button>
   <nav id="nav" class="nav" aria-label="Main">
     <a href="#top">Home</a>
     <a href="#packages">Packages</a>
     <a href="#how">How it works</a>
     <a href="#stories">Stories</a>
     <a href="#plan">Plan</a>
-    <span class="greet" id="greet" hidden></span>
-    <button class="btn btn-ghost" id="auth-btn" type="button">Sign in</button>
+    <span class="greeting" id="greeting" hidden></span>
+    <button class="button button-outline" id="login-button" type="button">Sign in</button>
   </nav>
 </header>
 
@@ -40,25 +40,25 @@
 
   <!-- ===== HERO: headline + destination carousel + stats ===== -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <p class="eyebrow">Small-group &amp; private tours</p>
+    <div class="hero-text">
+      <p class="small-title">Small-group &amp; private tours</p>
       <h1 id="hero-title">Go where the <em>map</em> gets quiet.</h1>
       <p>Wanderly Travel designs journeys around you: local guides, unhurried days, and zero tourist-trap itineraries.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#plan">Plan your trip</a>
-        <a class="btn btn-ghost" href="#packages">Browse tours</a>
+      <div class="hero-buttons">
+        <a class="button button-solid" href="#plan">Plan your trip</a>
+        <a class="button button-outline" href="#packages">Browse tours</a>
       </div>
     </div>
     <div class="hero-photo carousel" role="group" aria-roledescription="carousel" aria-label="Featured destinations">
       <div class="slides">
-        <div class="slide is-active"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=70" alt="Rice terraces and palm trees in Bali at sunrise"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Tegallalang, Bali</span></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1400&q=70" alt="White buildings overlooking the sea in Santorini" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Oia, Santorini</span></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1400&q=70" alt="Red torii gates and temple in Kyoto" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Fushimi Inari, Kyoto</span></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1400&q=70" alt="Snowy Swiss Alps above a green valley" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Swiss Alps</span></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1400&q=70" alt="Overwater villas above turquoise lagoon in the Maldives" loading="lazy"><span class="slide-caption"><svg class="ico"><use href="#i-pin"/></svg> Maldives</span></div>
+        <div class="slide active"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=70" alt="Rice terraces and palm trees in Bali at sunrise"><span class="slide-caption"><svg class="icon"><use href="#icon-pin"/></svg> Tegallalang, Bali</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1400&q=70" alt="White buildings overlooking the sea in Santorini" loading="lazy"><span class="slide-caption"><svg class="icon"><use href="#icon-pin"/></svg> Oia, Santorini</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1400&q=70" alt="Red torii gates and temple in Kyoto" loading="lazy"><span class="slide-caption"><svg class="icon"><use href="#icon-pin"/></svg> Fushimi Inari, Kyoto</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1400&q=70" alt="Snowy Swiss Alps above a green valley" loading="lazy"><span class="slide-caption"><svg class="icon"><use href="#icon-pin"/></svg> Swiss Alps</span></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1400&q=70" alt="Overwater villas above turquoise lagoon in the Maldives" loading="lazy"><span class="slide-caption"><svg class="icon"><use href="#icon-pin"/></svg> Maldives</span></div>
       </div>
-      <button class="arrow arrow-prev" type="button" aria-label="Previous destination"><svg class="ico"><use href="#i-left"/></svg></button>
-      <button class="arrow arrow-next" type="button" aria-label="Next destination"><svg class="ico"><use href="#i-right"/></svg></button>
+      <button class="arrow arrow-prev" type="button" aria-label="Previous destination"><svg class="icon"><use href="#icon-left"/></svg></button>
+      <button class="arrow arrow-next" type="button" aria-label="Next destination"><svg class="icon"><use href="#icon-right"/></svg></button>
       <div class="dots" role="group" aria-label="Choose destination"></div>
     </div>
     <ul class="stats" aria-label="Wanderly in numbers">
@@ -68,47 +68,47 @@
     </ul>
   </section>
 
-  <!-- ===== PACKAGES: CSS Grid mosaic with filter chips ===== -->
-  <section id="packages" class="section" aria-labelledby="pk-title">
-    <div class="section-head">
-      <h2 id="pk-title">Tour packages</h2>
-      <div class="chips" role="group" aria-label="Filter tours">
-        <button class="chip is-active" data-filter="all">All</button>
-        <button class="chip" data-filter="beach">Beach</button>
-        <button class="chip" data-filter="city">City</button>
-        <button class="chip" data-filter="adventure">Adventure</button>
+  <!-- ===== PACKAGES: CSS Grid mosaic with filter buttons ===== -->
+  <section id="packages" class="section" aria-labelledby="packages-title">
+    <div class="section-header">
+      <h2 id="packages-title">Tour packages</h2>
+      <div class="pills" role="group" aria-label="Filter tours">
+        <button class="pill active" data-filter="all">All</button>
+        <button class="pill" data-filter="beach">Beach</button>
+        <button class="pill" data-filter="city">City</button>
+        <button class="pill" data-filter="adventure">Adventure</button>
       </div>
     </div>
 
     <!-- search, sort and budget: all handled in script.js -->
-    <div class="tools">
-      <label class="tool-search">Search tours
-        <input type="search" id="tour-search" placeholder="Try Tokyo, surf, hiking...">
+    <div class="controls">
+      <label class="search-label">Search tours
+        <input type="search" id="search-box" placeholder="Try Tokyo, surf, hiking...">
       </label>
       <label>Sort by
-        <select id="tour-sort">
+        <select id="sort-select">
           <option value="featured">Featured</option>
           <option value="price-low">Price: low to high</option>
           <option value="price-high">Price: high to low</option>
           <option value="days-short">Shortest trip first</option>
         </select>
       </label>
-      <label>Max budget: <output id="budget-out">$2,000</output>
+      <label>Max budget: <output id="budget-output">$2,000</output>
         <input type="range" id="budget" min="500" max="2000" step="50" value="2000">
       </label>
     </div>
     <p class="result-count" id="result-count" aria-live="polite"></p>
-    <p class="empty" id="empty-msg" hidden>No tours match that yet. Try a bigger budget or clear the search.</p>
+    <p class="no-results" id="no-results" hidden>No tours match that yet. Try a bigger budget or clear the search.</p>
 
-    <div class="grid">
-      <article data-days="7" data-price="1150" class="card card-feature" data-type="beach">
+    <div class="tour-grid">
+      <article data-days="7" data-price="1150" class="card card-big" data-type="beach">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=70" alt="Turquoise beach with white sand" loading="lazy">
         <div class="card-body">
-          <span class="tag">Best seller</span>
+          <span class="badge">Best seller</span>
           <h3>Island Escape, Palawan</h3>
           <p>Lagoon hopping, snorkeling and sunset boats.</p>
-          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 7 days</span><span class="price">$1,150</span></div>
-          <a class="btn btn-primary" href="#plan">Book this trip</a>
+          <div class="card-info"><span><svg class="icon"><use href="#icon-clock"/></svg> 7 days</span><span class="price">$1,150</span></div>
+          <a class="button button-solid" href="#plan">Book this trip</a>
         </div>
       </article>
       <article data-days="6" data-price="1480" class="card" data-type="city">
@@ -116,8 +116,8 @@
         <div class="card-body">
           <h3>Neon Tokyo</h3>
           <p>Food, temples and tech.</p>
-          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 6 days</span><span class="price">$1,480</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a>
+          <div class="card-info"><span><svg class="icon"><use href="#icon-clock"/></svg> 6 days</span><span class="price">$1,480</span></div>
+          <a class="button button-outline" href="#plan">Book</a>
         </div>
       </article>
       <article data-days="5" data-price="1320" class="card" data-type="city">
@@ -125,8 +125,8 @@
         <div class="card-body">
           <h3>Paris in Spring</h3>
           <p>Museums, markets, Seine.</p>
-          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 5 days</span><span class="price">$1,320</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a>
+          <div class="card-info"><span><svg class="icon"><use href="#icon-clock"/></svg> 5 days</span><span class="price">$1,320</span></div>
+          <a class="button button-outline" href="#plan">Book</a>
         </div>
       </article>
       <article data-days="8" data-price="1690" class="card" data-type="adventure">
@@ -134,8 +134,8 @@
         <div class="card-body">
           <h3>Alpine Trails</h3>
           <p>Hut-to-hut hiking.</p>
-          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 8 days</span><span class="price">$1,690</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a>
+          <div class="card-info"><span><svg class="icon"><use href="#icon-clock"/></svg> 8 days</span><span class="price">$1,690</span></div>
+          <a class="button button-outline" href="#plan">Book</a>
         </div>
       </article>
       <article data-days="5" data-price="780" class="card" data-type="beach">
@@ -143,8 +143,8 @@
         <div class="card-body">
           <h3>Siargao Surf Week</h3>
           <p>Lessons and island life.</p>
-          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 5 days</span><span class="price">$780</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a>
+          <div class="card-info"><span><svg class="icon"><use href="#icon-clock"/></svg> 5 days</span><span class="price">$780</span></div>
+          <a class="button button-outline" href="#plan">Book</a>
         </div>
       </article>
       <article data-days="4" data-price="990" class="card" data-type="city">
@@ -152,39 +152,39 @@
         <div class="card-body">
           <h3>Venice &amp; Verona</h3>
           <p>Canals and quiet piazzas.</p>
-          <div class="meta"><span><svg class="ico"><use href="#i-clock"/></svg> 4 days</span><span class="price">$990</span></div>
-          <a class="btn btn-ghost" href="#plan">Book</a>
+          <div class="card-info"><span><svg class="icon"><use href="#icon-clock"/></svg> 4 days</span><span class="price">$990</span></div>
+          <a class="button button-outline" href="#plan">Book</a>
         </div>
       </article>
     </div>
   </section>
 
   <!-- ===== HOW IT WORKS: Flexbox steps ===== -->
-  <section id="how" class="section how" aria-labelledby="how-title">
+  <section id="how" class="section how-it-works" aria-labelledby="how-title">
     <h2 id="how-title">Three steps. No spreadsheets.</h2>
     <ol class="steps">
-      <li><span class="step-ico"><svg class="ico"><use href="#i-chat"/></svg></span><h3>Tell us your vibe</h3><p>Share dates, budget and mood.</p></li>
-      <li><span class="step-ico"><svg class="ico"><use href="#i-pin"/></svg></span><h3>Get a custom route</h3><p>Your planner drafts it within 48 hours.</p></li>
-      <li><span class="step-ico"><svg class="ico"><use href="#i-shield"/></svg></span><h3>Travel protected</h3><p>24/7 support and flexible rebooking.</p></li>
+      <li><span class="step-icon"><svg class="icon"><use href="#icon-chat"/></svg></span><h3>Tell us your vibe</h3><p>Share dates, budget and mood.</p></li>
+      <li><span class="step-icon"><svg class="icon"><use href="#icon-pin"/></svg></span><h3>Get a custom route</h3><p>Your planner drafts it within 48 hours.</p></li>
+      <li><span class="step-icon"><svg class="icon"><use href="#icon-shield"/></svg></span><h3>Travel protected</h3><p>24/7 support and flexible rebooking.</p></li>
     </ol>
   </section>
 
   <!-- ===== TESTIMONIALS: Flexbox cards ===== -->
-  <section id="stories" class="section stories" aria-labelledby="st-title">
-    <h2 id="st-title">Traveler stories</h2>
-    <div class="quotes">
-      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p>
+  <section id="stories" class="section stories" aria-labelledby="stories-title">
+    <h2 id="stories-title">Traveler stories</h2>
+    <div class="reviews">
+      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg></p>
         “Our guide knew a ramen shop that wasn’t on any list. Best meal of the year.”<footer>Mika R., Tokyo tour</footer></blockquote>
-      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p>
+      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg></p>
         “Plans changed last minute and they rebooked everything in an hour.”<footer>Daniel &amp; Joy, Palawan</footer></blockquote>
-      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></p>
+      <blockquote><p class="stars" aria-label="5 out of 5 stars"><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg></p>
         “Felt like traveling with a friend who happens to know everything.”<footer>Sofia L., Alpine Trails</footer></blockquote>
     </div>
   </section>
 
   <!-- ===== PLAN YOUR TRIP: call to action form ===== -->
   <section id="plan" class="plan" aria-labelledby="plan-title">
-    <div class="plan-inner">
+    <div class="plan-content">
       <div>
         <h2 id="plan-title">Plan your trip</h2>
         <p>Tell us where you’re dreaming of. We’ll send a draft itinerary, no payment needed.</p>
@@ -192,22 +192,22 @@
       <form class="plan-form" id="plan-form" novalidate>
         <label>Your name
           <input type="text" name="fullname" placeholder="Maria Santos" autocomplete="name">
-          <small class="error"></small>
+          <small class="field-error"></small>
         </label>
         <label>Email
           <input type="email" name="email" placeholder="maria@example.com" autocomplete="email">
-          <small class="error"></small>
+          <small class="field-error"></small>
         </label>
         <label>Destination
-          <input type="text" name="dest" placeholder="e.g. Kyoto">
-          <small class="error"></small>
+          <input type="text" name="destination" placeholder="e.g. Kyoto">
+          <small class="field-error"></small>
         </label>
         <label>Travel month
           <input type="month" name="month">
-          <small class="error"></small>
+          <small class="field-error"></small>
         </label>
         <label>Travelers
-          <select name="n"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select>
+          <select name="travelers"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select>
         </label>
         <label>Budget per person
           <select name="budget">
@@ -218,17 +218,17 @@
             <option>$2,500+</option>
           </select>
         </label>
-        <label class="wide">Anything we should know? <span class="counter" id="notes-count">0/200</span>
+        <label class="full-width">Anything we should know? <span class="char-count" id="notes-count">0/200</span>
           <textarea name="notes" rows="3" maxlength="200" placeholder="Food allergies, honeymoon, hates early mornings..."></textarea>
         </label>
-        <button class="btn btn-primary" type="submit">Plan your trip</button>
+        <button class="button button-solid" type="submit">Plan your trip</button>
       </form>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p class="logo"><svg class="ico"><use href="#i-plane"/></svg> Wanderly</p>
+  <p class="logo"><svg class="icon"><use href="#icon-plane"/></svg> Wanderly</p>
   <ul>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#how">How it works</a></li>
@@ -239,29 +239,29 @@
 </footer>
 
 <!-- ===== SIGN IN / SIGN UP: popup (demo only, no backend) ===== -->
-<dialog id="auth" aria-labelledby="auth-title">
-  <div class="auth">
-    <h2 id="auth-title">Welcome back</h2>
+<dialog id="login-popup" aria-labelledby="login-title">
+  <div class="popup">
+    <h2 id="login-title">Welcome back</h2>
     <div class="tabs" role="group" aria-label="Account mode">
-      <button type="button" class="chip is-active" data-mode="in">Sign in</button>
-      <button type="button" class="chip" data-mode="up">Sign up</button>
+      <button type="button" class="pill active" data-mode="signin">Sign in</button>
+      <button type="button" class="pill" data-mode="signup">Sign up</button>
     </div>
 
     <!-- Sign in: username + password only -->
-    <form class="auth-form" id="signin-form" novalidate>
-      <label class="span-2">Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
-      <label class="span-2">Password<input type="password" id="password-field" name="password" placeholder="Password" autocomplete="current-password" required></label>
-      <label class="check span-2"><input type="checkbox" id="show-pw-signin"> Show password</label>
+    <form class="popup-form" id="signin-form" novalidate>
+      <label class="full-width">Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
+      <label class="full-width">Password<input type="password" id="signin-password" name="password" placeholder="Password" autocomplete="current-password" required></label>
+      <label class="checkbox-label full-width"><input type="checkbox" id="show-password-signin"> Show password</label>
 
-      <p class="form-error span-2" role="alert" hidden></p>
-      <div class="auth-actions span-2">
-        <button class="btn btn-ghost" type="button" data-close>Close</button>
-        <button class="btn btn-primary" type="submit">Sign in</button>
+      <p class="form-error full-width" role="alert" hidden></p>
+      <div class="popup-buttons full-width">
+        <button class="button button-outline" type="button" data-close>Close</button>
+        <button class="button button-solid" type="submit">Sign in</button>
       </div>
     </form>
 
     <!-- Sign up: personal details, contact, address, then account -->
-    <form class="auth-form" id="signup-form" novalidate hidden>
+    <form class="popup-form" id="signup-form" novalidate hidden>
       <label>First name<input type="text" name="first" placeholder="Hinata" autocomplete="given-name" required></label>
       <label>Last name<input type="text" name="last" placeholder="Shoyo" autocomplete="family-name" required></label>
       <label>Gender
@@ -272,24 +272,24 @@
       <label>Birthdate<input type="date" name="birthdate" placeholder="Date of Birth" autocomplete="bday" required></label>
       <label>Email<input type="email" name="email" placeholder="john@example.com" autocomplete="email" required></label>
       <label>Phone<input type="tel" name="phone" placeholder="(555) 555-5555" autocomplete="tel" required></label>
-      <label class="span-2">Street address<input type="text" name="street" placeholder="123 Main St, Apt 4B" autocomplete="street-address" required></label>
+      <label class="full-width">Street address<input type="text" name="street" placeholder="123 Main St, Apt 4B" autocomplete="street-address" required></label>
       <label>City<input type="text" name="city" placeholder="New York" autocomplete="address-level2" required></label>
       <label>Country<input type="text" name="country" placeholder="United States" autocomplete="country-name" required></label>
       <label>Username<input type="text" name="username" placeholder="HinataShoyo10" autocomplete="username" required></label>
       <label>Password<input type="password" name="password" placeholder="At least 6 characters" autocomplete="new-password" minlength="6" required></label>
-      <label class="span-2">Confirm password<input type="password" name="confirm" placeholder="Type it again" autocomplete="new-password" required></label>
-      <label class="check span-2"><input type="checkbox" id="show-pw-signup"> Show password</label>
+      <label class="full-width">Confirm password<input type="password" name="confirm" placeholder="Type it again" autocomplete="new-password" required></label>
+      <label class="checkbox-label full-width"><input type="checkbox" id="show-password-signup"> Show password</label>
 
-      <p class="form-error span-2" role="alert" hidden></p>
-      <div class="auth-actions span-2">
-        <button class="btn btn-ghost" type="button" data-close>Close</button>
-        <button class="btn btn-primary" type="submit">Create account</button>
+      <p class="form-error full-width" role="alert" hidden></p>
+      <div class="popup-buttons full-width">
+        <button class="button button-outline" type="button" data-close>Close</button>
+        <button class="button button-solid" type="submit">Create account</button>
       </div>
     </form>
   </div>
 </dialog>
 
-<div class="toast" role="status" aria-live="polite"></div>
+<div class="notice" role="status" aria-live="polite"></div>
 <script src="script.js"></script>
 </body>
 </html>

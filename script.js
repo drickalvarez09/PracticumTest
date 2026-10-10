@@ -1,19 +1,19 @@
-// ---------- toast (the little message at the bottom) ----------
-const toast = document.querySelector('.toast');
-let toastTimer;
+// ---------- notice (the little message at the bottom of the screen) ----------
+const notice = document.querySelector('.notice');
+let noticeTimer;
 
-function showToast(message) {
-  clearTimeout(toastTimer); // if one is already showing, restart the timer
-  toast.textContent = message;
-  toast.classList.add('show');
-  toastTimer = setTimeout(function () {
-    toast.classList.remove('show');
+function showNotice(message) {
+  clearTimeout(noticeTimer); // if one is already showing, restart the timer
+  notice.textContent = message;
+  notice.classList.add('show');
+  noticeTimer = setTimeout(function () {
+    notice.classList.remove('show');
   }, 3500);
 }
 
 
 // ---------- mobile menu ----------
-const menuBtn = document.querySelector('.menu-btn');
+const menuButton = document.querySelector('.menu-button');
 const nav = document.getElementById('nav');
 
 function setMenu(open) {
@@ -22,10 +22,10 @@ function setMenu(open) {
   } else {
     nav.classList.remove('open');
   }
-  menuBtn.setAttribute('aria-expanded', open);
+  menuButton.setAttribute('aria-expanded', open);
 }
 
-menuBtn.addEventListener('click', function () {
+menuButton.addEventListener('click', function () {
   setMenu(!nav.classList.contains('open'));
 });
 
@@ -36,22 +36,22 @@ document.querySelectorAll('#nav a').forEach(function (link) {
   });
 });
 
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') setMenu(false);
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') setMenu(false);
 });
 
 
-// ---------- tour packages: filter chips + search + sort + budget ----------
+// ---------- tour packages: filter buttons + search + sort + budget ----------
 const cards = Array.from(document.querySelectorAll('.card'));
-const chips = document.querySelectorAll('[data-filter]');
-const searchBox = document.getElementById('tour-search');
-const sortSelect = document.getElementById('tour-sort');
+const filterButtons = document.querySelectorAll('[data-filter]');
+const searchBox = document.getElementById('search-box');
+const sortSelect = document.getElementById('sort-select');
 const budgetRange = document.getElementById('budget');
-const budgetOut = document.getElementById('budget-out');
+const budgetText = document.getElementById('budget-output');
 const resultCount = document.getElementById('result-count');
-const emptyMsg = document.getElementById('empty-msg');
+const noResults = document.getElementById('no-results');
 
-let activeType = 'all';
+let activeFilter = 'all';
 
 function formatPrice(number) {
   return '$' + number.toLocaleString('en-US');
@@ -59,55 +59,55 @@ function formatPrice(number) {
 
 // goes through every card and hides the ones that don't match
 function applyFilters() {
-  var text = searchBox.value.trim().toLowerCase();
+  var searchText = searchBox.value.trim().toLowerCase();
   var maxPrice = Number(budgetRange.value);
-  var shown = 0;
+  var shownCount = 0;
 
   for (var i = 0; i < cards.length; i++) {
     var card = cards[i];
-    var words = card.textContent.toLowerCase();
+    var cardText = card.textContent.toLowerCase();
     var price = Number(card.dataset.price);
 
-    var typeOk = activeType === 'all' || card.dataset.type === activeType;
-    var textOk = words.includes(text);
-    var priceOk = price <= maxPrice;
+    var matchesFilter = activeFilter === 'all' || card.dataset.type === activeFilter;
+    var matchesSearch = cardText.includes(searchText);
+    var matchesBudget = price <= maxPrice;
 
-    if (typeOk && textOk && priceOk) {
-      card.classList.remove('is-hidden');
-      shown++;
+    if (matchesFilter && matchesSearch && matchesBudget) {
+      card.classList.remove('hidden');
+      shownCount++;
     } else {
-      card.classList.add('is-hidden');
+      card.classList.add('hidden');
     }
   }
 
-  emptyMsg.hidden = shown !== 0;
-  resultCount.textContent = shown === 1 ? 'Showing 1 tour' : 'Showing ' + shown + ' tours';
+  noResults.hidden = shownCount !== 0;
+  resultCount.textContent = shownCount === 1 ? 'Showing 1 tour' : 'Showing ' + shownCount + ' tours';
 }
 
 // sorting uses the CSS "order" property so the HTML doesn't have to move
 function sortCards() {
-  const how = sortSelect.value;
-  const list = cards.slice(); // copy, so the original order stays safe
+  const sortBy = sortSelect.value;
+  const sortedCards = cards.slice(); // copy, so the original order stays safe
 
-  if (how === 'price-low') {
-    list.sort(function (a, b) { return a.dataset.price - b.dataset.price; });
-  } else if (how === 'price-high') {
-    list.sort(function (a, b) { return b.dataset.price - a.dataset.price; });
-  } else if (how === 'days-short') {
-    list.sort(function (a, b) { return a.dataset.days - b.dataset.days; });
+  if (sortBy === 'price-low') {
+    sortedCards.sort(function (a, b) { return a.dataset.price - b.dataset.price; });
+  } else if (sortBy === 'price-high') {
+    sortedCards.sort(function (a, b) { return b.dataset.price - a.dataset.price; });
+  } else if (sortBy === 'days-short') {
+    sortedCards.sort(function (a, b) { return a.dataset.days - b.dataset.days; });
   }
   // "featured" = no sorting, just the original order
 
-  list.forEach(function (card, index) {
+  sortedCards.forEach(function (card, index) {
     card.style.order = index;
   });
 }
 
-chips.forEach(function (chip) {
-  chip.addEventListener('click', function () {
-    activeType = chip.dataset.filter;
-    chips.forEach(function (c) {
-      c.classList.toggle('is-active', c === chip);
+filterButtons.forEach(function (filterButton) {
+  filterButton.addEventListener('click', function () {
+    activeFilter = filterButton.dataset.filter;
+    filterButtons.forEach(function (button) {
+      button.classList.toggle('active', button === filterButton);
     });
     applyFilters();
   });
@@ -118,7 +118,7 @@ searchBox.addEventListener('input', applyFilters);
 sortSelect.addEventListener('change', sortCards);
 
 budgetRange.addEventListener('input', function () {
-  budgetOut.textContent = formatPrice(Number(budgetRange.value));
+  budgetText.textContent = formatPrice(Number(budgetRange.value));
   applyFilters();
 });
 
@@ -130,25 +130,25 @@ sortCards();
 const planForm = document.getElementById('plan-form');
 
 cards.forEach(function (card) {
-  const bookBtn = card.querySelector('a.btn');
-  bookBtn.addEventListener('click', function () {
+  const bookButton = card.querySelector('a.button');
+  bookButton.addEventListener('click', function () {
     // the link itself scrolls down to #plan, we just fill the destination
-    planForm.dest.value = card.querySelector('h3').textContent;
-    clearError(planForm.dest);
+    planForm.destination.value = card.querySelector('h3').textContent;
+    clearError(planForm.destination);
   });
 });
 
 
 // ---------- hero carousel ----------
 const carousel = document.querySelector('.carousel');
-const dotBox = carousel.querySelector('.dots');
+const dotsBox = carousel.querySelector('.dots');
 let slides = Array.from(carousel.querySelectorAll('.slide'));
 let dots = [];
-let current = 0;
-let autoTimer;
+let currentSlide = 0;
+let autoPlayTimer;
 
 function buildDots() {
-  dotBox.innerHTML = '';
+  dotsBox.innerHTML = '';
   dots = [];
   for (let i = 0; i < slides.length; i++) {
     const dot = document.createElement('button');
@@ -156,33 +156,33 @@ function buildDots() {
     dot.className = 'dot';
     dot.setAttribute('aria-label', 'Show destination ' + (i + 1));
     dot.addEventListener('click', function () {
-      goTo(i);
-      startAuto();
+      showSlide(i);
+      startAutoPlay();
     });
-    dotBox.appendChild(dot);
+    dotsBox.appendChild(dot);
     dots.push(dot);
   }
 }
 
-function goTo(index) {
+function showSlide(index) {
   // the % trick makes it loop around at both ends
-  current = (index + slides.length) % slides.length;
+  currentSlide = (index + slides.length) % slides.length;
   for (let i = 0; i < slides.length; i++) {
-    slides[i].classList.toggle('is-active', i === current);
-    slides[i].setAttribute('aria-hidden', i !== current);
-    dots[i].classList.toggle('is-active', i === current);
+    slides[i].classList.toggle('active', i === currentSlide);
+    slides[i].setAttribute('aria-hidden', i !== currentSlide);
+    dots[i].classList.toggle('active', i === currentSlide);
   }
 }
 
 // if a photo doesn't load, remove its slide so nobody sees an empty one
-function removeIfBroken(slide) {
+function removeBrokenSlide(slide) {
   const img = slide.querySelector('img');
 
   function remove() {
     slides = slides.filter(function (s) { return s !== slide; });
     slide.remove();
     buildDots();
-    goTo(Math.min(current, slides.length - 1));
+    showSlide(Math.min(currentSlide, slides.length - 1));
   }
 
   img.addEventListener('error', remove);
@@ -190,44 +190,44 @@ function removeIfBroken(slide) {
 }
 
 // auto-advance every 6 seconds (not if the person prefers less motion)
-function startAuto() {
-  clearInterval(autoTimer);
+function startAutoPlay() {
+  clearInterval(autoPlayTimer);
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  autoTimer = setInterval(function () {
-    goTo(current + 1);
+  autoPlayTimer = setInterval(function () {
+    showSlide(currentSlide + 1);
   }, 6000);
 }
 
 buildDots();
-slides.slice().forEach(removeIfBroken);
-goTo(0);
-startAuto();
+slides.slice().forEach(removeBrokenSlide);
+showSlide(0);
+startAutoPlay();
 
 carousel.querySelector('.arrow-prev').addEventListener('click', function () {
-  goTo(current - 1);
-  startAuto();
+  showSlide(currentSlide - 1);
+  startAutoPlay();
 });
 carousel.querySelector('.arrow-next').addEventListener('click', function () {
-  goTo(current + 1);
-  startAuto();
+  showSlide(currentSlide + 1);
+  startAutoPlay();
 });
 
 // pause while the mouse is over it or something inside has focus
-carousel.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
-carousel.addEventListener('mouseleave', startAuto);
-carousel.addEventListener('focusin', function () { clearInterval(autoTimer); });
+carousel.addEventListener('mouseenter', function () { clearInterval(autoPlayTimer); });
+carousel.addEventListener('mouseleave', startAutoPlay);
+carousel.addEventListener('focusin', function () { clearInterval(autoPlayTimer); });
 
 carousel.setAttribute('tabindex', '0'); // so keyboard users can reach it
-carousel.addEventListener('keydown', function (e) {
-  if (e.key === 'ArrowLeft') goTo(current - 1);
-  if (e.key === 'ArrowRight') goTo(current + 1);
+carousel.addEventListener('keydown', function (event) {
+  if (event.key === 'ArrowLeft') showSlide(currentSlide - 1);
+  if (event.key === 'ArrowRight') showSlide(currentSlide + 1);
 });
 
 
 // ---------- sign in / sign up popup ----------
-const dialog = document.getElementById('auth');
-const authBtn = document.getElementById('auth-btn');
-const greet = document.getElementById('greet');
+const loginPopup = document.getElementById('login-popup');
+const loginButton = document.getElementById('login-button');
+const greeting = document.getElementById('greeting');
 const signinForm = document.getElementById('signin-form');
 const signupForm = document.getElementById('signup-form');
 const modeTabs = document.querySelectorAll('[data-mode]');
@@ -272,23 +272,23 @@ function setCurrentUser(name) {
 function updateHeader() {
   const name = getCurrentUser();
   if (name) {
-    greet.textContent = 'Hi, ' + name + '!';
-    greet.hidden = false;
-    authBtn.textContent = 'Sign out';
+    greeting.textContent = 'Hi, ' + name + '!';
+    greeting.hidden = false;
+    loginButton.textContent = 'Sign out';
   } else {
-    greet.hidden = true;
-    authBtn.textContent = 'Sign in';
+    greeting.hidden = true;
+    loginButton.textContent = 'Sign in';
   }
 }
 
 function setMode(mode) {
-  const signingUp = mode === 'up';
+  const signingUp = mode === 'signup';
   modeTabs.forEach(function (tab) {
-    tab.classList.toggle('is-active', tab.dataset.mode === mode);
+    tab.classList.toggle('active', tab.dataset.mode === mode);
   });
   signinForm.hidden = signingUp;
   signupForm.hidden = !signingUp;
-  document.getElementById('auth-title').textContent = signingUp ? 'Create your account' : 'Welcome back';
+  document.getElementById('login-title').textContent = signingUp ? 'Create your account' : 'Welcome back';
 }
 
 function showFormError(form, message) {
@@ -297,39 +297,39 @@ function showFormError(form, message) {
   box.hidden = false;
 }
 
-function resetDialog() {
+function resetPopup() {
   signinForm.reset();
   signupForm.reset();
   signinForm.querySelector('.form-error').hidden = true;
   signupForm.querySelector('.form-error').hidden = true;
 
   // reset sign-in password visibility
-  var pwSignin = document.getElementById('password-field');
-  pwSignin.type = 'password';
-  document.getElementById('show-pw-signin').checked = false;
+  var signinPasswordInput = document.getElementById('signin-password');
+  signinPasswordInput.type = 'password';
+  document.getElementById('show-password-signin').checked = false;
 
   // reset sign-up password visibility
-  var pwSignup = signupForm.querySelector('input[name="password"]');
-  var confirmSignup = signupForm.querySelector('input[name="confirm"]');
-  if (pwSignup) pwSignup.type = 'password';
-  if (confirmSignup) confirmSignup.type = 'password';
-  document.getElementById('show-pw-signup').checked = false;
+  var signupPasswordInput = signupForm.querySelector('input[name="password"]');
+  var signupConfirmInput = signupForm.querySelector('input[name="confirm"]');
+  if (signupPasswordInput) signupPasswordInput.type = 'password';
+  if (signupConfirmInput) signupConfirmInput.type = 'password';
+  document.getElementById('show-password-signup').checked = false;
 
-  setMode('in');
+  setMode('signin');
 }
 
-function closeDialog() {
-  dialog.close();
-  resetDialog();
+function closePopup() {
+  loginPopup.close();
+  resetPopup();
 }
 
 
-authBtn.addEventListener('click', function () {
+loginButton.addEventListener('click', function () {
   if (getCurrentUser()) {
     setCurrentUser(null);
-    showToast('You have been signed out.');
+    showNotice('You have been signed out.');
   } else {
-    dialog.showModal();
+    loginPopup.showModal();
   }
 });
 
@@ -339,38 +339,38 @@ modeTabs.forEach(function (tab) {
   });
 });
 
-document.querySelectorAll('[data-close]').forEach(function (btn) {
-  btn.addEventListener('click', closeDialog);
+document.querySelectorAll('[data-close]').forEach(function (button) {
+  button.addEventListener('click', closePopup);
 });
 
 // clicking the dark area outside the popup closes it
-dialog.addEventListener('click', function (e) {
-  if (e.target === dialog) closeDialog();
+loginPopup.addEventListener('click', function (event) {
+  if (event.target === loginPopup) closePopup();
 });
-dialog.addEventListener('cancel', resetDialog); // Esc key
+loginPopup.addEventListener('cancel', resetPopup); // Esc key
 
 // Sign-in show password
-const showPwSignin = document.getElementById('show-pw-signin');
-const passwordField = document.getElementById('password-field');
+const showSigninPassword = document.getElementById('show-password-signin');
+const signinPassword = document.getElementById('signin-password');
 
-showPwSignin.addEventListener('change', function () {
-  passwordField.type = this.checked ? 'text' : 'password';
+showSigninPassword.addEventListener('change', function () {
+  signinPassword.type = this.checked ? 'text' : 'password';
 });
 
 // Sign-up show password
-const showPwSignup = document.getElementById('show-pw-signup');
+const showSignupPassword = document.getElementById('show-password-signup');
 
-showPwSignup.addEventListener('change', function () {
-  const newType = this.checked ? 'text' : 'password';
-  const pwInputs = signupForm.querySelectorAll('input[name="password"], input[name="confirm"]');
-  pwInputs.forEach(function (input) {
-    input.type = newType;
+showSignupPassword.addEventListener('change', function () {
+  const inputType = this.checked ? 'text' : 'password';
+  const passwordInputs = signupForm.querySelectorAll('input[name="password"], input[name="confirm"]');
+  passwordInputs.forEach(function (input) {
+    input.type = inputType;
   });
 });
 
 
-signinForm.addEventListener('submit', function (e) {
-  e.preventDefault();
+signinForm.addEventListener('submit', function (event) {
+  event.preventDefault();
   const username = signinForm.username.value.trim();
   const password = signinForm.password.value;
 
@@ -386,67 +386,67 @@ signinForm.addEventListener('submit', function (e) {
   }
 
   setCurrentUser(users[username.toLowerCase()]);
-  closeDialog();
-  showToast('Welcome back, ' + users[username.toLowerCase()] + '!');
+  closePopup();
+  showNotice('Welcome back, ' + users[username.toLowerCase()] + '!');
 });
 
-signupForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const f = signupForm;
+signupForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const form = signupForm;
 
   // check the easy stuff first, one message at a time
-  const required = ['first', 'last', 'gender', 'birthdate', 'email', 'phone', 'street', 'city', 'country', 'username', 'password'];
-  for (let i = 0; i < required.length; i++) {
-    if (f[required[i]].value.trim() === '') {
-      showFormError(f, 'Please fill in every field (missing: ' + required[i] + ').');
+  const requiredFields = ['first', 'last', 'gender', 'birthdate', 'email', 'phone', 'street', 'city', 'country', 'username', 'password'];
+  for (let i = 0; i < requiredFields.length; i++) {
+    if (form[requiredFields[i]].value.trim() === '') {
+      showFormError(form, 'Please fill in every field (missing: ' + requiredFields[i] + ').');
       return;
     }
   }
 
-  if (!f.email.value.includes('@') || !f.email.value.includes('.')) {
-    showFormError(f, 'That email does not look right.');
+  if (!form.email.value.includes('@') || !form.email.value.includes('.')) {
+    showFormError(form, 'That email does not look right.');
     return;
   }
 
   // age check: must be at least 13
-  const birth = new Date(f.birthdate.value);
+  const birthDate = new Date(form.birthdate.value);
   const today = new Date();
-  let age = today.getFullYear() - birth.getFullYear();
-  const hadBirthday = today.getMonth() > birth.getMonth() ||
-    (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const hadBirthday = today.getMonth() > birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
   if (!hadBirthday) age = age - 1;
   if (isNaN(age) || age < 13 || age > 120) {
-    showFormError(f, 'You need to be at least 13 to sign up.');
+    showFormError(form, 'You need to be at least 13 to sign up.');
     return;
   }
 
-  const username = f.username.value.trim();
+  const username = form.username.value.trim();
   if (username.length < 4 || username.includes(' ')) {
-    showFormError(f, 'Username needs 4+ characters and no spaces.');
+    showFormError(form, 'Username needs 4+ characters and no spaces.');
     return;
   }
 
-  if (f.password.value.length < 6) {
-    showFormError(f, 'Password needs at least 6 characters.');
+  if (form.password.value.length < 6) {
+    showFormError(form, 'Password needs at least 6 characters.');
     return;
   }
-  if (f.password.value !== f.confirm.value) {
-    showFormError(f, 'The two passwords do not match.');
+  if (form.password.value !== form.confirm.value) {
+    showFormError(form, 'The two passwords do not match.');
     return;
   }
 
   const users = getUsers();
   if (users[username.toLowerCase()]) {
-    showFormError(f, 'That username is taken, pick another one.');
+    showFormError(form, 'That username is taken, pick another one.');
     return;
   }
 
-  const firstName = f.first.value.trim();
+  const firstName = form.first.value.trim();
   users[username.toLowerCase()] = firstName;
   saveUsers(users);
   setCurrentUser(firstName);
-  closeDialog();
-  showToast('Account created. Welcome, ' + firstName + '!');
+  closePopup();
+  showNotice('Account created. Welcome, ' + firstName + '!');
 });
 
 updateHeader();
@@ -463,14 +463,14 @@ planForm.month.min = thisMonth;
 
 function setError(input, message) {
   const label = input.closest('label');
-  label.querySelector('.error').textContent = message;
-  input.classList.add('invalid');
+  label.querySelector('.field-error').textContent = message;
+  input.classList.add('has-error');
 }
 
 function clearError(input) {
   const label = input.closest('label');
-  label.querySelector('.error').textContent = '';
-  input.classList.remove('invalid');
+  label.querySelector('.field-error').textContent = '';
+  input.classList.remove('has-error');
 }
 
 // live character counter for the notes box
@@ -479,53 +479,53 @@ notes.addEventListener('input', function () {
 });
 
 // remove the red error as soon as the person starts fixing the field
-['fullname', 'email', 'dest', 'month'].forEach(function (name) {
+['fullname', 'email', 'destination', 'month'].forEach(function (name) {
   planForm[name].addEventListener('input', function () {
     clearError(planForm[name]);
   });
 });
 
-planForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  let ok = true;
+planForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  let isValid = true;
 
   const fullname = planForm.fullname.value.trim();
   const email = planForm.email.value.trim();
-  const dest = planForm.dest.value.trim();
+  const destination = planForm.destination.value.trim();
   const month = planForm.month.value;
 
   if (fullname.length < 2) {
     setError(planForm.fullname, 'Please tell us your name.');
-    ok = false;
+    isValid = false;
   }
 
   // very simple email check, good enough for a demo
   if (!email.includes('@') || !email.includes('.') || email.indexOf('@') > email.lastIndexOf('.')) {
     setError(planForm.email, 'Enter a valid email so we can reach you.');
-    ok = false;
+    isValid = false;
   }
 
-  if (dest === '') {
-    setError(planForm.dest, 'Where do you want to go?');
-    ok = false;
+  if (destination === '') {
+    setError(planForm.destination, 'Where do you want to go?');
+    isValid = false;
   }
 
   if (month === '') {
     setError(planForm.month, 'Pick a month.');
-    ok = false;
+    isValid = false;
   } else if (month < thisMonth) {
     setError(planForm.month, 'That month already passed!');
-    ok = false;
+    isValid = false;
   }
 
-  if (!ok) {
+  if (!isValid) {
     // jump to the first field with a problem
-    planForm.querySelector('.invalid').focus();
+    planForm.querySelector('.has-error').focus();
     return;
   }
 
   const firstName = fullname.split(' ')[0];
-  showToast('Thanks ' + firstName + '! A planner will email you a ' + dest + ' draft in 48 hours.');
+  showNotice('Thanks ' + firstName + '! A planner will email you a ' + destination + ' draft in 48 hours.');
   planForm.reset();
   notesCount.textContent = '0/200';
 });
@@ -536,13 +536,13 @@ planForm.addEventListener('submit', function (e) {
 if ('IntersectionObserver' in window) {
   var fadeTargets = document.querySelectorAll('.section, .plan, .hero');
   fadeTargets.forEach(function (el) {
-    el.classList.add('fade-section');
+    el.classList.add('fade-in');
   });
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+        entry.target.classList.add('visible');
         observer.unobserve(entry.target); // only animate once
       }
     });
@@ -553,7 +553,7 @@ if ('IntersectionObserver' in window) {
   });
 } else {
   // fallback for older browsers: just show everything
-  document.querySelectorAll('.fade-section').forEach(function (el) {
-    el.classList.add('is-visible');
+  document.querySelectorAll('.fade-in').forEach(function (el) {
+    el.classList.add('visible');
   });
 }
