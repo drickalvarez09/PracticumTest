@@ -1,8 +1,3 @@
-// Wanderly - script.js
-// Everything here is demo only. Nothing is sent to a server.
-// The only thing saved is a tiny sign-in note in localStorage.
-
-
 // ---------- toast (the little message at the bottom) ----------
 const toast = document.querySelector('.toast');
 let toastTimer;
