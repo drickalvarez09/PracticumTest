@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Our colors and fonts from the old styles.css, now Tailwind theme values.
+   "--color-ink" becomes the classes bg-ink, text-ink, border-ink, etc. */
+@theme {
+  --color-ink: #10222b;
+  --color-grey: #5b6b73;
+  --color-mist: #e6eef0;
+  --color-silver: #cfdadf;
+  --color-coral: #ff6b4a;
+  --color-coral-dark: #ec5535;
+  --color-error: #c0392b;
+  --color-error-light: #fdecea;
+  --color-teal: #0e7c86;
+  --color-teal-dark: #0a5960;
+  --color-teal-light: #d3f0f2;
+  --color-cream: #fbf4ea;
+  --color-gold: #f5b301;
+
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* sticky header should not cover section titles */
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}

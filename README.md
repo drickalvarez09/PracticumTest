@@ -1,64 +1,40 @@
-# Wanderly Travel Agency
+# Wanderly Travel Agency (React + Tailwind)
 
-A single-page travel agency website built for the **Week 1 practicum activity**. It uses plain HTML5, CSS3 and vanilla JavaScript, with no frameworks or libraries.
+Assignment 1 rebuilt with Vite, React and Tailwind CSS. Same business, content and look as the HTML/CSS/JS version.
 
-**Live site:** https://drickalvarez09.github.io/PracticumTest/
-
-## Features
-
-- Hero section with a destination photo carousel (arrows, dots, keyboard arrow keys, cross-fade)
-- Tour package grid with duration and price, plus Beach / City / Adventure filters
-- "How it works" steps and a traveler testimonials section
-- **Plan your trip** call-to-action form (replaces a shop link)
-- Sign in / Sign up popup (demo only, no backend)
-- Mobile menu, hover effects, and reduced-motion support
-
-## Requirements Checklist
-
-- [x] Single page, responsive, no frameworks
-- [x] Semantic landmarks (`header`, `nav`, `main`, `section`, `article`, `footer`) and one `<h1>`
-- [x] Working nav links
-- [x] `box-sizing: border-box` set globally
-- [x] Custom CSS variables for colors
-- [x] Flexbox (header, nav, steps, testimonials, footer) and Grid (hero, package grid, plan section)
-- [x] No horizontal scroll on phone, tablet, or desktop
-
-## Color Names
-
-All colors live at the top of `styles.css` in `:root`, with plain names:
-
-| Variable | Use |
-| --- | --- |
-| `--black` | text, dark buttons, footer |
-| `--white` | cards, form background |
-| `--grey` / `--light-grey` / `--silver` | secondary text, borders, footer text |
-| `--red` / `--red-hover` | main accent (buttons, highlights) |
-| `--error-red` / `--light-red` | form errors |
-| `--teal` / `--dark-teal` / `--light-teal` | secondary accent |
-| `--cream` | page background |
-| `--yellow` | review stars |
-
-## Project Structure
+## Run it
 
 ```
-PracticumTest/
-├── index.html   # page structure and content
-├── styles.css   # variables, layout, responsive rules
-├── script.js    # menu, filter, carousel, popup, forms
-└── README.md
+npm install
+npm run dev
 ```
 
-## Run Locally
+## Structure
 
-1. Clone the repo: `git clone https://github.com/drickalvarez09/PracticumTest.git`
-2. Open `index.html` in a browser.
+```
+src/
+├── main.jsx            # starts React
+├── App.jsx             # Header + Hero + MainContent + Footer
+├── index.css           # Tailwind import + our colors/fonts (@theme)
+├── data/siteData.js    # ALL content: tours, slides, steps, reviews, nav links
+└── components/
+    ├── Header.jsx          # sticky nav, mobile menu (useState)
+    ├── Hero.jsx            # headline, buttons, stats
+    ├── Carousel.jsx        # destination photos (useState for current slide)
+    ├── MainContent.jsx     # <main>; holds the shared "destination" state
+    ├── Packages.jsx        # tour grid + category filter (useState)
+    ├── TourCard.jsx        # one tour; has its own travelers state
+    ├── TravelerStepper.jsx # reusable controlled component (value + onChange)
+    ├── HowItWorks.jsx
+    ├── Stories.jsx
+    ├── PlanForm.jsx        # controlled form with simple validation
+    ├── Footer.jsx
+    ├── Icon.jsx            # inline SVG icons
+    └── buttonStyles.js     # shared Tailwind classes for buttons
+```
 
 ## Notes
 
-- The sign-in, sign-up and plan forms are front-end only. They show a message but do not save or send data.
-- Package prices, testimonials and stats are placeholder content.
-
-## Credits
-
-- Photos: [Unsplash](https://unsplash.com)
-- Icons: custom inline SVG
+- Mobile-first: unprefixed classes are for phones, then `sm:` `md:` `lg:` add changes for bigger screens.
+- Data is hardcoded. Photos come from Unsplash.
+- The sign in / sign up popup from the old version was removed to keep the app simple.
