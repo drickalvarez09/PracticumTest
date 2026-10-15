@@ -1,6 +1,6 @@
 # Wanderly Travel Agency (React + Tailwind)
 
-Assignment 1 rebuilt with Vite, React and Tailwind CSS. Same business, content and look as the HTML/CSS/JS version.
+Assignment 1 rebuilt with Vite, React and Tailwind CSS.
 
 ## Run it
 
