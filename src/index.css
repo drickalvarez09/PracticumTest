@@ -1,31 +1,32 @@
 @import "tailwindcss";
 
-/* Our colors and fonts from the old styles.css, now Tailwind theme values.
-   "--color-ink" becomes the classes bg-ink, text-ink, border-ink, etc. */
+/* Our colors and font, set up for Tailwind.
+   Each color name gives us classes. For example --color-orange gives us
+   bg-orange, text-orange and border-orange.
+   (Our "black" is a very dark blue-black.) */
 @theme {
-  --color-ink: #10222b;
-  --color-grey: #5b6b73;
-  --color-mist: #e6eef0;
+  --color-black: #10222b;
+  --color-gray: #5b6b73;
+  --color-light-gray: #e6eef0;
   --color-silver: #cfdadf;
-  --color-coral: #ff6b4a;
-  --color-coral-dark: #ec5535;
-  --color-error: #c0392b;
-  --color-error-light: #fdecea;
+  --color-orange: #ff6b4a;
+  --color-dark-orange: #ec5535;
+  --color-red: #c0392b;
   --color-teal: #0e7c86;
   --color-teal-dark: #0a5960;
   --color-teal-light: #d3f0f2;
   --color-cream: #fbf4ea;
-  --color-gold: #f5b301;
+  --color-yellow: #f5b301;
 
   --font-serif: Georgia, "Times New Roman", serif;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* sticky header should not cover section titles */
+  scroll-padding-top: 5rem; /* so the sticky header does not cover section titles */
 }
 
 body {
   background: var(--color-cream);
-  color: var(--color-ink);
+  color: var(--color-black);
 }

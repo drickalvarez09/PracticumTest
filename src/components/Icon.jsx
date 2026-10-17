@@ -1,4 +1,4 @@
-// One place for all our little SVG icons.
+// All our small icons are in this one file.
 // Use it like: <Icon name="pin" />
 const icons = {
   clock: (

@@ -1,5 +1,5 @@
-// All the content of the site lives here, so the components stay short.
-// To add a tour, add one more object to the `tours` array. No JSX changes needed.
+// All the content of the site is in this file, so the components stay short.
+// To add a tour, add one more object to the `tours` array. No other changes needed.
 
 export const navLinks = [
   { label: 'Home', href: '#top' },
@@ -9,7 +9,7 @@ export const navLinks = [
   { label: 'Plan', href: '#plan' },
 ]
 
-// carousel photos in the hero
+// photos for the slideshow at the top
 export const slides = [
   {
     id: 1,
@@ -49,7 +49,7 @@ export const stats = [
   { id: 3, value: '4.9', label: 'average rating' },
 ]
 
-// the tour packages. `type` is what the filter buttons look at.
+// the tour packages. `type` is what the filter buttons check.
 export const tours = [
   {
     id: 1,
@@ -115,7 +115,7 @@ export const tours = [
   },
 ]
 
-// the buttons above the grid
+// the filter buttons above the tours
 export const filters = [
   { value: 'all', label: 'All' },
   { value: 'beach', label: 'Beach' },

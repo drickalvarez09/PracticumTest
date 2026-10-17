@@ -1,26 +1,26 @@
 import { useState } from 'react'
-import { btnSolid } from './buttonStyles.js'
+import { solidButton } from './buttonStyles.js'
 
-// Shared look for every input / select / textarea
+// The same look for every input, select and textarea
 const inputClass =
-  'w-full rounded-xl border-2 border-mist bg-white px-3 py-2.5 font-normal text-ink focus:border-teal focus:outline-none'
+  'w-full rounded-xl border-2 border-light-gray bg-white px-3 py-2.5 font-normal text-black focus:border-teal focus:outline-none'
 
-// A label + the input inside it + a spot for the error message
+// A label, the input inside it, and a spot for the error message
 function Field({ label, error, className = '', children }) {
   return (
     <label className={`flex min-w-0 flex-col gap-1 text-sm font-semibold ${className}`}>
       {label}
       {children}
-      <small className="min-h-[1.1em] font-medium text-error">{error}</small>
+      <small className="min-h-[1.1em] font-medium text-red">{error}</small>
     </label>
   )
 }
 
-// the earliest month you can pick, like "2026-10"
+// the first month you can pick, like "2026-10"
 const thisMonth = new Date().toISOString().slice(0, 7)
 
-// `destination` lives in the parent, because the "Book this trip" buttons
-// on the cards need to fill it in. All the other fields live in here.
+// `destination` is kept in the parent, because the "Book this trip" buttons
+// on the cards need to fill it in. All the other fields are kept in here.
 function PlanForm({ destination, onDestinationChange }) {
   const [values, setValues] = useState({
     name: '',
@@ -32,7 +32,7 @@ function PlanForm({ destination, onDestinationChange }) {
   const [errors, setErrors] = useState({})
   const [message, setMessage] = useState('')
 
-  // One handler for all the simple fields: the input's `name` tells us which value to change
+  // One function for all the simple fields. The input's `name` tells us which value to change
   function handleChange(event) {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
@@ -51,7 +51,7 @@ function PlanForm({ destination, onDestinationChange }) {
 
     setErrors(newErrors)
 
-    // no errors? show the thank-you and clear the form
+    // no errors? show the thank-you message and clear the form
     if (Object.keys(newErrors).length === 0) {
       const firstName = values.name.trim().split(' ')[0]
       setMessage(`Thanks ${firstName}! A planner will email you a ${destination} draft in 48 hours.`)
@@ -66,7 +66,7 @@ function PlanForm({ destination, onDestinationChange }) {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="grid gap-x-4 gap-y-2 rounded-2xl bg-white p-5 text-ink sm:grid-cols-2 sm:p-6"
+      className="grid gap-x-4 gap-y-2 rounded-2xl bg-white p-5 text-black sm:grid-cols-2 sm:p-6"
     >
       <Field label="Your name" error={errors.name}>
         <input
@@ -76,7 +76,7 @@ function PlanForm({ destination, onDestinationChange }) {
           onChange={handleChange}
           placeholder="Maria Santos"
           autoComplete="name"
-          className={`${inputClass} ${errors.name ? 'border-error' : ''}`}
+          className={`${inputClass} ${errors.name ? 'border-red' : ''}`}
         />
       </Field>
 
@@ -88,7 +88,7 @@ function PlanForm({ destination, onDestinationChange }) {
           onChange={handleChange}
           placeholder="maria@example.com"
           autoComplete="email"
-          className={`${inputClass} ${errors.email ? 'border-error' : ''}`}
+          className={`${inputClass} ${errors.email ? 'border-red' : ''}`}
         />
       </Field>
 
@@ -98,7 +98,7 @@ function PlanForm({ destination, onDestinationChange }) {
           value={destination}
           onChange={(event) => onDestinationChange(event.target.value)}
           placeholder="e.g. Kyoto"
-          className={`${inputClass} ${errors.destination ? 'border-error' : ''}`}
+          className={`${inputClass} ${errors.destination ? 'border-red' : ''}`}
         />
       </Field>
 
@@ -109,7 +109,7 @@ function PlanForm({ destination, onDestinationChange }) {
           min={thisMonth}
           value={values.month}
           onChange={handleChange}
-          className={`${inputClass} ${errors.month ? 'border-error' : ''}`}
+          className={`${inputClass} ${errors.month ? 'border-red' : ''}`}
         />
       </Field>
 
@@ -140,7 +140,7 @@ function PlanForm({ destination, onDestinationChange }) {
         </p>
       )}
 
-      <button type="submit" className={`${btnSolid} sm:col-span-2`}>
+      <button type="submit" className={`${solidButton} sm:col-span-2`}>
         Plan your trip
       </button>
     </form>

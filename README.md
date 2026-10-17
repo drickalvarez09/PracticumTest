@@ -20,7 +20,7 @@ src/
 └── components/
     ├── Header.jsx          # sticky nav, mobile menu (useState)
     ├── Hero.jsx            # headline, buttons, stats
-    ├── Carousel.jsx        # destination photos (useState for current slide)
+    ├── Slideshow.jsx      # destination photos (useState for current slide)
     ├── MainContent.jsx     # <main>; holds the shared "destination" state
     ├── Packages.jsx        # tour grid + category filter (useState)
     ├── TourCard.jsx        # one tour; has its own travelers state

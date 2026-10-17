@@ -13,20 +13,20 @@ function Stories() {
       </h2>
       <div className="mt-6 grid gap-5 md:grid-cols-3">
         {reviews.map((review, index) => (
-          // the middle review gets the teal look and sits slightly lower
+          // the middle review is teal and sits a little lower
           <blockquote
             key={review.id}
-            className={`m-0 rounded-2xl p-6 font-serif text-lg shadow-xl shadow-ink/10 ${
+            className={`m-0 rounded-2xl p-6 font-serif text-lg shadow-xl shadow-black/10 ${
               index === 1 ? 'bg-teal text-white md:translate-y-5' : 'bg-white'
             }`}
           >
-            <p className="mb-2 flex text-gold" aria-label="5 out of 5 stars">
+            <p className="mb-2 flex text-yellow" aria-label="5 out of 5 stars">
               {[1, 2, 3, 4, 5].map((n) => (
                 <Icon key={n} name="star" />
               ))}
             </p>
             “{review.quote}”
-            <footer className={`mt-4 font-sans text-sm ${index === 1 ? 'text-teal-light' : 'text-grey'}`}>
+            <footer className={`mt-4 font-sans text-sm ${index === 1 ? 'text-teal-light' : 'text-gray'}`}>
               {review.author}
             </footer>
           </blockquote>

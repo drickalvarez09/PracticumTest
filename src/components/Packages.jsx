@@ -6,8 +6,8 @@ function Packages({ onBook }) {
   // which filter button is selected: 'all', 'beach', 'city' or 'adventure'
   const [activeFilter, setActiveFilter] = useState('all')
 
-  // Work out which tours to show. We never change the `tours` array itself,
-  // we just make a shorter list from it each time the component renders.
+  // Pick which tours to show. We never change the `tours` array itself.
+  // Each time the component runs, we make a shorter list from it.
   const visibleTours =
     activeFilter === 'all' ? tours : tours.filter((tour) => tour.type === activeFilter)
 
@@ -28,8 +28,8 @@ function Packages({ onBook }) {
               type="button"
               aria-pressed={activeFilter === filter.value}
               onClick={() => setActiveFilter(filter.value)}
-              className={`cursor-pointer rounded-full border-2 border-ink px-4 py-1.5 text-sm font-semibold transition-colors hover:bg-ink hover:text-white ${
-                activeFilter === filter.value ? 'bg-ink text-white' : 'text-ink'
+              className={`cursor-pointer rounded-full border-2 border-black px-4 py-1.5 text-sm font-semibold transition-colors hover:bg-black hover:text-white ${
+                activeFilter === filter.value ? 'bg-black text-white' : 'text-black'
               }`}
             >
               {filter.label}
@@ -38,11 +38,11 @@ function Packages({ onBook }) {
         </div>
       </div>
 
-      <p className="mb-5 text-sm text-grey" aria-live="polite">
+      <p className="mb-5 text-sm text-gray" aria-live="polite">
         Showing {visibleTours.length} {visibleTours.length === 1 ? 'tour' : 'tours'}
       </p>
 
-      {/* 1 column on phones, 2 from sm, 3 from lg. "grid-flow-dense" fills gaps. */}
+      {/* 1 column on phones, 2 on sm, 3 on lg. "grid-flow-dense" fills empty gaps. */}
       <div className="grid grid-flow-dense grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {visibleTours.map((tour) => (
           <TourCard key={tour.id} tour={tour} onBook={onBook} />

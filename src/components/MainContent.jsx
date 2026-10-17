@@ -5,9 +5,9 @@ import Stories from './Stories.jsx'
 import PlanForm from './PlanForm.jsx'
 
 function MainContent() {
-  // The destination is shared by two components: the "Book this trip" buttons
-  // (inside Packages) set it, and the PlanForm shows it. When two components
-  // need the same data, the state lives in their common parent: here.
+  // Two components use the destination: the "Book this trip" buttons
+  // (inside Packages) set it, and PlanForm shows it.
+  // When two components need the same data, we keep it in their parent. That is here.
   const [destination, setDestination] = useState('')
 
   return (

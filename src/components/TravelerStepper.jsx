@@ -1,8 +1,8 @@
-// A "controlled component": it keeps NO state of its own.
-//   - `value` is the number to show        (the parent gives it to us)
-//   - `onChange` is what we call to change it (the parent decides what to do)
-// So the parent owns the number, and this component only displays it and
-// reports button clicks. Same idea as QuantityStepper.
+// This is a "controlled component". It keeps NO state of its own.
+//   - `value`: the number to show (the parent gives it to us)
+//   - `onChange`: a function we call to change the number (the parent decides what to do)
+// The parent owns the number. We only show it, and tell the parent when a button is clicked.
+// Same idea as QuantityStepper.
 function TravelerStepper({ value, onChange, min = 1, max = 10 }) {
   return (
     <div className="inline-flex items-center gap-3" role="group" aria-label="Number of travelers">
@@ -11,7 +11,7 @@ function TravelerStepper({ value, onChange, min = 1, max = 10 }) {
         aria-label="Fewer travelers"
         disabled={value <= min}
         onClick={() => onChange(value - 1)}
-        className="size-8 cursor-pointer rounded-full border-2 border-ink font-bold hover:bg-ink hover:text-white disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-ink"
+        className="size-8 cursor-pointer rounded-full border-2 border-black font-bold hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-black"
       >
         −
       </button>
@@ -23,7 +23,7 @@ function TravelerStepper({ value, onChange, min = 1, max = 10 }) {
         aria-label="More travelers"
         disabled={value >= max}
         onClick={() => onChange(value + 1)}
-        className="size-8 cursor-pointer rounded-full border-2 border-ink font-bold hover:bg-ink hover:text-white disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-ink"
+        className="size-8 cursor-pointer rounded-full border-2 border-black font-bold hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-black"
       >
         +
       </button>
