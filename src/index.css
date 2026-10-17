@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-/* Our colors and font, set up for Tailwind.
-   Each color name gives us classes. For example --color-orange gives us
-   bg-orange, text-orange and border-orange.
-   (Our "black" is a very dark blue-black.) */
+
 @theme {
   --color-black: #10222b;
   --color-gray: #5b6b73;
