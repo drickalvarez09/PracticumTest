@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// One row per person who can sign in: email, display name, hashed password.
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+// One row per tour package on the site: the database copy of the `tours` array.
+model Item {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  type        String
+  days        Int
+  price       Int
+  badge       String?
+  featured    Boolean  @default(false)
+  image       String
+  alt         String
+  createdAt   DateTime @default(now())
+}
