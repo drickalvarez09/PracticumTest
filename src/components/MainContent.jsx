@@ -1,10 +1,12 @@
+'use client'
+
 import { useState } from 'react'
 import Packages from './Packages.jsx'
 import HowItWorks from './HowItWorks.jsx'
 import Stories from './Stories.jsx'
 import PlanForm from './PlanForm.jsx'
 
-function MainContent() {
+function MainContent({ items }) {
   // Two components use the destination: the "Book this trip" buttons
   // (inside Packages) set it, and PlanForm shows it.
   // When two components need the same data, we keep it in their parent. That is here.
@@ -12,7 +14,7 @@ function MainContent() {
 
   return (
     <main>
-      <Packages onBook={setDestination} />
+      <Packages items={items} onBook={setDestination} />
       <HowItWorks />
       <Stories />
 

@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import TourCard from './TourCard.jsx'
-import { tours, filters } from '../data/siteData.js'
+import { filters } from '../data/siteData.js'
 
-function Packages({ onBook }) {
+function Packages({ items, onBook }) {
   // which filter button is selected: 'all', 'beach', 'city' or 'adventure'
   const [activeFilter, setActiveFilter] = useState('all')
 
-  // Pick which tours to show. We never change the `tours` array itself.
+  // Pick which tours to show. We never change the `items` array itself.
   // Each time the component runs, we make a shorter list from it.
   const visibleTours =
-    activeFilter === 'all' ? tours : tours.filter((tour) => tour.type === activeFilter)
+    activeFilter === 'all' ? items : items.filter((tour) => tour.type === activeFilter)
 
   return (
     <section

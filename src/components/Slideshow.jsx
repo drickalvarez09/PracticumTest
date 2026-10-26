@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import Icon from './Icon.jsx'
 import { slides } from '../data/siteData.js'

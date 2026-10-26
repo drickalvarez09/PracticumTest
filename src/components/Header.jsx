@@ -1,10 +1,15 @@
+'use client'
+
 import { useState } from 'react'
+import Link from 'next/link'
+import { signOut, useSession } from 'next-auth/react'
 import Icon from './Icon.jsx'
 import { navLinks } from '../data/siteData.js'
 
 function Header() {
   // true = the phone menu is open
   const [menuOpen, setMenuOpen] = useState(false)
+  const { status } = useSession()
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between gap-4 border-b border-light-gray bg-cream/90 px-4 py-3 backdrop-blur sm:px-8 lg:px-12">
@@ -44,6 +49,24 @@ function Header() {
             {link.label}
           </a>
         ))}
+
+        {status === 'authenticated' ? (
+          <button
+            type="button"
+            onClick={() => signOut({ redirectTo: '/' })}
+            className="cursor-pointer py-2 text-left font-medium hover:text-orange md:py-0"
+          >
+            Sign out
+          </button>
+        ) : status === 'unauthenticated' ? (
+          <Link
+            href="/login"
+            onClick={() => setMenuOpen(false)}
+            className="py-2 font-medium hover:text-orange md:py-0"
+          >
+            Sign in
+          </Link>
+        ) : null}
       </nav>
     </header>
   )
