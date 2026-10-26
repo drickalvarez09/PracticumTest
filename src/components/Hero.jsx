@@ -13,7 +13,7 @@ function Hero() {
           Small-group &amp; private tours
         </p>
         <h1 id="hero-title" className="mb-4 font-serif text-5xl leading-tight sm:text-6xl lg:text-7xl">
-          Go where the <em className="text-orange">map</em> gets quiet.
+          Go where the <em className="text-dark-orange">map</em> gets quiet.
         </h1>
         <p className="mb-4 text-lg">
           Wanderly Travel designs journeys around you: local guides, unhurried days, and zero
@@ -38,7 +38,7 @@ function Hero() {
       {/* The stats bar covers both columns on md and bigger screens */}
       <ul
         aria-label="Wanderly in numbers"
-        className="mt-4 flex flex-col gap-4 rounded-2xl bg-black px-8 py-5 text-lg text-white sm:flex-row sm:justify-around md:col-span-2"
+        className="mt-4 flex flex-col gap-4 rounded-2xl bg-band px-8 py-5 text-lg text-on-band sm:flex-row sm:justify-around md:col-span-2"
       >
         {stats.map((stat) => (
           <li key={stat.id} className="flex items-baseline gap-1.5">

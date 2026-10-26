@@ -45,7 +45,7 @@ function Slideshow() {
         type="button"
         aria-label="Previous destination"
         onClick={() => goTo(current - 1)}
-        className="absolute top-1/2 left-3 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-white/90 shadow hover:bg-orange hover:text-white"
+        className="absolute top-1/2 left-3 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-white/90 shadow hover:bg-orange hover:text-on-accent"
       >
         <Icon name="left" />
       </button>
@@ -53,7 +53,7 @@ function Slideshow() {
         type="button"
         aria-label="Next destination"
         onClick={() => goTo(current + 1)}
-        className="absolute top-1/2 right-3 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-white/90 shadow hover:bg-orange hover:text-white"
+        className="absolute top-1/2 right-3 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-white/90 shadow hover:bg-orange hover:text-on-accent"
       >
         <Icon name="right" />
       </button>

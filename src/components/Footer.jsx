@@ -6,8 +6,8 @@ function Footer() {
   const links = navLinks.filter((link) => link.label !== 'Home')
 
   return (
-    <footer className="flex flex-col gap-4 bg-black px-4 py-6 text-silver sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-8 lg:px-12">
-      <p className="inline-flex items-center gap-1.5 font-serif text-2xl font-bold text-white">
+    <footer className="flex flex-col gap-4 bg-band px-4 py-6 text-silver sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-8 lg:px-12">
+      <p className="inline-flex items-center gap-1.5 font-serif text-2xl font-bold text-on-band">
         <Icon name="plane" className="size-6" /> Wanderly
       </p>
       <ul className="flex flex-wrap gap-5">

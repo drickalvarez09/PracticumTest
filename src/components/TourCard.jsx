@@ -26,7 +26,7 @@ function TourCard({ tour, onBook }) {
       />
       <div className={`flex flex-col gap-1.5 p-4 ${tour.featured ? '' : 'flex-1'}`}>
         {tour.badge && (
-          <span className="self-start rounded-full bg-orange px-3 py-0.5 text-xs font-bold text-white">
+          <span className="self-start rounded-full bg-orange px-3 py-0.5 text-xs font-bold text-on-accent">
             {tour.badge}
           </span>
         )}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import Icon from './Icon.jsx'
@@ -10,6 +10,18 @@ function Header() {
   // true = the phone menu is open
   const [menuOpen, setMenuOpen] = useState(false)
   const { status } = useSession()
+  const [theme, setTheme] = useState('light')
+
+  // The theme-init script in layout.jsx has already set the class; read it here.
+  useEffect(() => {
+    setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+  }, [])
+
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark')
+    localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    setTheme(isDark ? 'dark' : 'light')
+  }
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between gap-4 border-b border-light-gray bg-cream/90 px-4 py-3 backdrop-blur sm:px-8 lg:px-12">
@@ -27,7 +39,7 @@ function Header() {
         aria-expanded={menuOpen}
         aria-controls="nav"
         onClick={() => setMenuOpen(!menuOpen)}
-        className="cursor-pointer rounded-full bg-black px-4 py-2 font-semibold text-white md:hidden"
+        className="cursor-pointer rounded-full bg-band px-4 py-2 font-semibold text-on-band md:hidden"
       >
         {menuOpen ? 'Close' : 'Menu'}
       </button>
@@ -44,17 +56,26 @@ function Header() {
             key={link.href}
             href={link.href}
             onClick={() => setMenuOpen(false)}
-            className="py-2 font-medium hover:text-orange md:py-0"
+            className="py-2 font-medium hover:text-teal-dark md:py-0"
           >
             {link.label}
           </a>
         ))}
 
+        <button
+          type="button"
+          aria-pressed={theme === 'dark'}
+          onClick={toggleTheme}
+          className="cursor-pointer rounded-full border-2 border-black px-3 py-1 text-sm font-semibold hover:bg-black hover:text-white"
+        >
+          {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+        </button>
+
         {status === 'authenticated' ? (
           <button
             type="button"
             onClick={() => signOut({ redirectTo: '/' })}
-            className="cursor-pointer py-2 text-left font-medium hover:text-orange md:py-0"
+            className="cursor-pointer py-2 text-left font-medium hover:text-teal-dark md:py-0"
           >
             Sign out
           </button>
@@ -62,7 +83,7 @@ function Header() {
           <Link
             href="/login"
             onClick={() => setMenuOpen(false)}
-            className="py-2 font-medium hover:text-orange md:py-0"
+            className="py-2 font-medium hover:text-teal-dark md:py-0"
           >
             Sign in
           </Link>

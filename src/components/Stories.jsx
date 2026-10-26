@@ -26,7 +26,7 @@ function Stories() {
               ))}
             </p>
             “{review.quote}”
-            <footer className={`mt-4 font-sans text-sm ${index === 1 ? 'text-teal-light' : 'text-gray'}`}>
+            <footer className={`mt-4 font-sans text-sm ${index === 1 ? 'text-white' : 'text-gray'}`}>
               {review.author}
             </footer>
           </blockquote>

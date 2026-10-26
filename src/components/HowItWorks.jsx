@@ -19,7 +19,7 @@ function HowItWorks() {
                 extraTopSpace[index]
               } ${index === 1 ? 'border-orange' : 'border-teal'}`}
             >
-              <span className="mb-3 grid size-12 place-items-center rounded-full bg-cream text-xl text-teal transition group-hover:bg-orange group-hover:text-white">
+              <span className="mb-3 grid size-12 place-items-center rounded-full bg-cream text-xl text-teal transition group-hover:bg-orange group-hover:text-on-accent">
                 <Icon name={step.icon} />
               </span>
               <h3 className="mb-2 font-serif text-xl">{step.title}</h3>

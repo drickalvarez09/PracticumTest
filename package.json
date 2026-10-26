@@ -9,7 +9,6 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
-
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
