@@ -3,12 +3,23 @@ import Credentials from 'next-auth/providers/credentials'
 import { prisma } from '@/lib/prisma'
 import { verifyPassword } from '@/lib/password'
 
-export const { handlers } = NextAuth({
+export const { handlers, auth } = NextAuth({
   // Credentials sign-in needs a JWT cookie; there is no database session table.
   session: { strategy: 'jwt' },
   pages: { signIn: '/login' },
   // We run behind localhost/Vercel only, so the forwarded host is trusted.
   trustHost: true,
+  // Copy the database id into the JWT, then into the session, so API routes can use session.user.id.
+  callbacks: {
+    jwt({ token, user }) {
+      if (user?.id) token.id = user.id
+      return token
+    },
+    session({ session, token }) {
+      if (token?.id) session.user.id = token.id
+      return session
+    },
+  },
   providers: [
     Credentials({
       credentials: {
