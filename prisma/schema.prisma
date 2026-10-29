@@ -7,16 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// One row per person who can sign in: email, display name, hashed password.
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
   name         String?
   passwordHash String
   createdAt    DateTime @default(now())
+  orders       Order[]
 }
 
-// One row per tour package on the site: the database copy of the `tours` array.
 model Item {
   id          Int      @id @default(autoincrement())
   name        String
@@ -29,4 +28,26 @@ model Item {
   image       String
   alt         String
   createdAt   DateTime @default(now())
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  userId          String
+  status          String      @default("pending")
+  amountTotal     Int
+  stripeSessionId String?     @unique
+  createdAt       DateTime    @default(now())
+  user            User        @relation(fields: [userId], references: [id])
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id        Int    @id @default(autoincrement())
+  orderId   String
+  itemId    Int
+  quantity  Int
+  unitPrice Int
+  order     Order  @relation(fields: [orderId], references: [id])
+  item      Item   @relation(fields: [itemId], references: [id])
 }
