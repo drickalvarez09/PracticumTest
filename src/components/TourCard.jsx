@@ -11,6 +11,32 @@ function TourCard({ tour, onBook }) {
   // Every card has its OWN travelers number,
   // so changing one card does not change the others.
   const [travelers, setTravelers] = useState(2)
+  // true while we are asking the server for a Stripe checkout URL
+  const [buying, setBuying] = useState(false)
+  const [buyError, setBuyError] = useState('')
+
+  async function handleBuy() {
+    setBuying(true)
+    setBuyError('')
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ itemId: tour.id, quantity: travelers }),
+      })
+      if (response.status === 401) {
+        window.location.assign('/login')
+        return
+      }
+      const data = await response.json()
+      if (!response.ok || !data.url) throw new Error(data.error || 'Checkout failed')
+      // Full navigation, so the Stripe page replaces this one.
+      window.location.assign(data.url)
+    } catch {
+      setBuyError('Could not start checkout. Please try again.')
+      setBuying(false)
+    }
+  }
 
   return (
     <article
@@ -51,13 +77,28 @@ function TourCard({ tour, onBook }) {
           <strong className="text-black">{formatPrice(tour.price * travelers)}</strong>
         </p>
 
-        <a
-          href="#plan"
-          onClick={() => onBook(tour.name)}
-          className={`mt-auto ${tour.featured ? solidButton : outlineButton}`}
-        >
-          Book this trip
-        </a>
+        <div className="mt-auto flex flex-wrap gap-2">
+          <a
+            href="#plan"
+            onClick={() => onBook(tour.name)}
+            className={`flex-1 ${tour.featured ? solidButton : outlineButton}`}
+          >
+            Book this trip
+          </a>
+          <button
+            type="button"
+            onClick={handleBuy}
+            disabled={buying}
+            className={`flex-1 ${solidButton} disabled:cursor-not-allowed disabled:opacity-60`}
+          >
+            {buying ? 'Starting…' : 'Buy now'}
+          </button>
+        </div>
+        {buyError && (
+          <p role="alert" className="text-sm font-semibold text-red">
+            {buyError}
+          </p>
+        )}
       </div>
     </article>
   )
