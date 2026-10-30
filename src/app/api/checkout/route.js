@@ -1,4 +1,3 @@
-// cache-bust v3
 import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
 import { getStripe } from '@/lib/stripe'
